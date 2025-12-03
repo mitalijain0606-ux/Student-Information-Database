@@ -141,3 +141,34 @@ function validateValue(value, validValues) {
         throw new Error(`Value '${value}' is invalid. Allowed: ${validValues.join(", ")}`);
     }
 }
+
+//-------------------------------------------------------
+// COMMAND: SET
+//-------------------------------------------------------
+function commandSET(tokens) {
+    const key = tokens[1];
+    if (!key) throw new Error("SET needs a key.");
+
+    const jsonStart = tokens.findIndex(t => t.startsWith("{"));
+    if (jsonStart === -1) throw new Error("Invalid JSON.");
+
+    let ttl = null;
+    if (!isNaN(tokens[tokens.length - 1])) ttl = Number(tokens[tokens.length - 1]);
+
+    const jsonTokens = ttl ? tokens.slice(jsonStart, -1) : tokens.slice(jsonStart);
+    const jsonString = jsonTokens.join(" ");
+
+    let json;
+    try { json = JSON.parse(jsonString); }
+    catch { throw new Error("Invalid JSON."); }
+
+    DB[key] = {
+        data: json,
+        ttl,
+        expiresAt: ttl ? Date.now() + ttl : null,
+        validKeys: Object.keys(json),
+        validValues: Object.values(json).map(v => String(v))
+    };
+
+    return "OK";
+}
