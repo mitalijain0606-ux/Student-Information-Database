@@ -92,3 +92,33 @@ function renderIndices() {
     document.getElementById("indexVisualizer").textContent =
         JSON.stringify(filtered, null, 2);
 }
+
+//-------------------------------------------------------
+// TTL LIVE COUNTDOWN — EXPIRED KEYS ARE NOT AUTO-DELETED
+//-------------------------------------------------------
+function updateTTLCountdown() {
+    const now = Date.now();
+
+    for (const [key, entry] of Object.entries(DB)) {
+        const cell = document.querySelector(`.ttl-cell[data-key="${key}"]`);
+        if (!cell) continue;
+
+        // No TTL → show "-"
+        if (!entry.expiresAt) {
+            cell.textContent = "-";
+            continue;
+        }
+
+        const remaining = entry.expiresAt - now;
+
+        // TTL expired → mark but do NOT delete
+        if (remaining <= 0) {
+            cell.textContent = "Expired";
+            continue;
+        }
+
+        // Show countdown
+        const seconds = Math.floor(remaining / 1000);
+        cell.textContent = `Expires in ${seconds}s`;
+    }
+}
