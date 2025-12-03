@@ -264,3 +264,38 @@ function commandRANGE(tokens) {
         ? JSON.stringify(results, null, 2)
         : "No results.";
 }
+
+//-------------------------------------------------------
+// MAIN COMMAND ROUTER
+//-------------------------------------------------------
+function runCommand() {
+    const inputEl = document.getElementById("commandInput");
+    const raw = inputEl.value.trim();
+    if (!raw) return;
+
+    const tokens = raw.split(/\s+/);
+    const cmd = tokens[0].toUpperCase();
+
+    try {
+        let result;
+
+        switch (cmd) {
+            case "SET": result = commandSET(tokens); break;
+            case "GET": result = commandGET(tokens); break;
+            case "DEL": result = commandDEL(tokens); break;
+            case "INDEX": result = commandINDEX(tokens); break;
+            case "RANGE": result = commandRANGE(tokens); break;
+            default:
+                throw new Error("Unknown command.");
+        }
+
+        print(result);
+        renderVisualizer();
+        persist();
+
+    } catch (err) {
+        print("Error: " + err.message);
+    }
+
+    inputEl.value = "";
+}
