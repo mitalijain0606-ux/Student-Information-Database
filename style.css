@@ -298,3 +298,101 @@ body {
     color: var(--success-color);
     margin: 0;
 }
+
+
+/* =========================================
+   8. Documentation
+   ========================================= */
+.doc-section {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.doc-panel {
+    border-left: 4px solid var(--primary-color);
+}
+
+.doc-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .doc-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.doc-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.doc-text {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =========================================
+   9. Footer
+   ========================================= */
+.footer {
+    border-top: 1px solid #1e293b;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-top: auto;
+    /* Pushes footer to bottom */
+}
+
+/* =========================================
+   10. Utility Classes
+   ========================================= */
+.hidden {
+    display: none;
+}
+
+/* Text Colors */
+.text-red {
+    color: var(--error-color);
+}
+
+.text-green {
+    color: var(--success-color);
+}
+
+.text-blue {
+    color: var(--cmd-color);
+}
+
+.text-slate {
+    color: #cbd5e1;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+/* Spacing Helpers */
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+/* Text Truncation */
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20rem;
+    display: block;
+}
