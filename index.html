@@ -27,7 +27,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Main Content -->
     <main class="main-container">
 
@@ -43,4 +43,19 @@
                     </svg>
                     Query Console
                 </h2>
+                <div class="input-group">
+                    <div class="input-label-container">
+                        <label class="input-label">ENTER COMMAND</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <!-- Command Input Field: Listens for 'Enter' key to execute -->
+                        <input type="text" id="commandInput" class="cmd-input"
+                            placeholder="e.g., SET user:1 '{&quot;name&quot;:&quot;Alice&quot;}' 30000"
+                            onkeydown="if(event.key === 'Enter') runCommand()">
+
+                        <!-- Run Button: Executes the command on click -->
+                        <button onclick="runCommand()" class="btn-run">Run</button>
+                    </div>
+                </div>
+
 </body>
