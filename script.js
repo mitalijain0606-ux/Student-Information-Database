@@ -189,3 +189,21 @@ function commandGET(tokens) {
 
     return JSON.stringify(entry.data, null, 2);
 }
+
+//-------------------------------------------------------
+// COMMAND: DEL (Manual delete only)
+//-------------------------------------------------------
+function commandDEL(tokens) {
+    const key = tokens[1];
+    if (!key) throw new Error("DEL needs a key.");
+
+    if (!DB[key]) throw new Error(`Key '${key}' does not exist.`);
+
+    delete DB[key];
+    delete INDICES[key];
+
+    renderVisualizer();
+    persist();
+
+    return `DELETED: '${key}'`;
+}
