@@ -35,3 +35,11 @@ function print(msg) {
 function clearOutput() {
     document.getElementById("consoleOutput").textContent = "";
 }
+
+//-------------------------------------------------------
+// LOCAL STORAGE: SAVE
+//-------------------------------------------------------
+function persist() {
+    localStorage.setItem("simple_kv_db", JSON.stringify(DB));
+    localStorage.setItem("simple_kv_index", JSON.stringify(INDICES));
+}
