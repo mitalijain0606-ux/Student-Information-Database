@@ -1,1 +1,1 @@
-# Student-Information-Databse
+# Student-Information-Database
