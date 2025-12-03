@@ -118,3 +118,105 @@ body {
     flex-direction: column;
     gap: 1.5rem;
 }
+
+
+/* =========================================
+   5. Components
+   ========================================= */
+
+/* Glassmorphism Panel */
+.glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    /* Blur effect behind the panel */
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.panel-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.title-blue {
+    color: var(--cmd-color);
+}
+
+.title-emerald {
+    color: var(--success-color);
+}
+
+.title-purple {
+    color: #d8b4fe;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.cmd-input {
+    width: 100%;
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: #f1f5f9;
+    font-family: var(--font-mono);
+    outline: none;
+}
+
+.cmd-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Buttons */
+.btn-run {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-run:hover {
+    background-color: var(--primary-hover);
+}
+
+.help-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.cmd-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.25rem 1rem;
+    font-family: var(--font-mono);
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+@media (min-width: 640px) {
+    .cmd-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
