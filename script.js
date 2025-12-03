@@ -122,3 +122,22 @@ function updateTTLCountdown() {
         cell.textContent = `Expires in ${seconds}s`;
     }
 }
+
+//-------------------------------------------------------
+// VALIDATION HELPERS
+//-------------------------------------------------------
+function validateBaseExists(indexName) {
+    if (!DB[indexName]) throw new Error(`Base key '${indexName}' not found.`);
+}
+
+function validateField(field, validKeys) {
+    if (!validKeys.includes(field)) {
+        throw new Error(`Field '${field}' is invalid. Allowed: ${validKeys.join(", ")}`);
+    }
+}
+
+function validateValue(value, validValues) {
+    if (!validValues.includes(String(value))) {
+        throw new Error(`Value '${value}' is invalid. Allowed: ${validValues.join(", ")}`);
+    }
+}
