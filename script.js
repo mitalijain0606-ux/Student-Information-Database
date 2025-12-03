@@ -43,3 +43,12 @@ function persist() {
     localStorage.setItem("simple_kv_db", JSON.stringify(DB));
     localStorage.setItem("simple_kv_index", JSON.stringify(INDICES));
 }
+
+//-------------------------------------------------------
+// VISUALIZER (RIGHT SIDE)
+//-------------------------------------------------------
+function renderVisualizer() {
+    renderKV();
+    renderIndices();
+    updateTTLCountdown(); // start TTL immediately
+}
