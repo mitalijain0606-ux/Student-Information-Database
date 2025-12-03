@@ -32,3 +32,46 @@
     --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+/* =========================================
+   2. Reset & Base Styles
+   ========================================= */
+* {
+    box-sizing: border-box;
+    /* Ensure padding/border doesn't increase element width */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Sticky footer layout */
+}
+
+/* =========================================
+   3. Custom Scrollbar (Webkit)
+   ========================================= */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e293b;
+    /* Dark track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #475569;
+    /* Slate thumb */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+    /* Lighter on hover */
+}
