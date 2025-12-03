@@ -52,3 +52,43 @@ function renderVisualizer() {
     renderIndices();
     updateTTLCountdown(); // start TTL immediately
 }
+
+function renderKV() {
+    const body = document.getElementById("kvTableBody");
+    const empty = document.getElementById("kvEmptyState");
+
+    body.innerHTML = "";
+
+    const keys = Object.keys(DB);
+
+    if (keys.length === 0) {
+        empty.style.display = "block";
+        return;
+    }
+
+    empty.style.display = "none";
+
+    keys.forEach(key => {
+        const entry = DB[key];
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${key}</td>
+            <td>${JSON.stringify(entry.data)}</td>
+            <td class="ttl-cell" data-key="${key}"></td>
+        `;
+
+        body.appendChild(tr);
+    });
+}
+
+function renderIndices() {
+    const filtered = {};
+
+    for (const [key, obj] of Object.entries(INDICES)) {
+        if (Object.keys(obj).length > 0) filtered[key] = obj;
+    }
+
+    document.getElementById("indexVisualizer").textContent =
+        JSON.stringify(filtered, null, 2);
+}
