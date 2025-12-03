@@ -24,3 +24,14 @@ function handleEnter(event) {
         runCommand();
     }
 }
+
+//-------------------------------------------------------
+// PRINT + CLEAR OUTPUT
+//-------------------------------------------------------
+function print(msg) {
+    document.getElementById("consoleOutput").textContent = msg;
+}
+
+function clearOutput() {
+    document.getElementById("consoleOutput").textContent = "";
+}
