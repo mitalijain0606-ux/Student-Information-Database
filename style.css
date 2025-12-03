@@ -75,3 +75,46 @@ body {
     background: #64748b;
     /* Lighter on hover */
 }
+
+/* =========================================
+   4. Layout & Grid System
+   ========================================= */
+.header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #334155;
+    background-color: rgba(30, 41, 59, 0.5);
+    /* Semi-transparent header */
+}
+
+.header-content {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container {
+    flex-grow: 1;
+    padding: 1.5rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
+    gap: 1.5rem;
+}
+
+/* Desktop Layout: Two columns */
+@media (min-width: 1024px) {
+    .main-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.section-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
