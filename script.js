@@ -207,3 +207,27 @@ function commandDEL(tokens) {
 
     return `DELETED: '${key}'`;
 }
+
+//-------------------------------------------------------
+// COMMAND: INDEX
+//-------------------------------------------------------
+function commandINDEX(tokens) {
+    const indexName = tokens[1];
+    const field = tokens[2];
+    const value = tokens[3];
+
+    validateBaseExists(indexName);
+    const entry = DB[indexName];
+
+    validateField(field, entry.validKeys);
+    validateValue(value, entry.validValues);
+
+    if (String(entry.data[field]) !== String(value)) {
+        throw new Error("Key-value mismatch for document.");
+    }
+
+    INDICES[indexName] = INDICES[indexName] || {};
+    INDICES[indexName][field] = value;
+
+    return "INDEXED";
+}
