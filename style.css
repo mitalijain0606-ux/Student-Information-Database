@@ -220,3 +220,81 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* =========================================
+   6. Console Output
+   ========================================= */
+.console-output-area {
+    background-color: #020617;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    overflow-y: auto;
+    border: 1px solid #1e293b;
+    color: #cbd5e1;
+    height: 16rem;
+    white-space: pre-wrap;
+    flex-grow: 1;
+}
+
+.console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-clear:hover {
+    color: white;
+    border: 1px solid #334155;
+    border-radius: 0.5rem;
+}
+
+.kv-table {
+    width: 100%;
+    text-align: left;
+    font-size: 0.875rem;
+    border-collapse: collapse;
+}
+
+.kv-table th {
+    background-color: #1e293b;
+    color: var(--text-muted);
+    padding: 0.75rem;
+    font-weight: 500;
+}
+
+.kv-table td {
+    padding: 0.75rem;
+    border-top: 1px solid #334155;
+    background-color: rgba(15, 23, 42, 0.5);
+    font-family: var(--font-mono);
+}
+
+.kv-table tr:hover td {
+    background-color: rgba(30, 41, 59, 0.8);
+}
+
+.index-view {
+    background-color: #020617;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    overflow: auto;
+    border: 1px solid #1e293b;
+    flex-grow: 1;
+    max-height: 16rem;
+    color: var(--success-color);
+    margin: 0;
+}
