@@ -172,3 +172,20 @@ function commandSET(tokens) {
 
     return "OK";
 }
+
+//-------------------------------------------------------
+// COMMAND: GET (Does NOT delete expired keys)
+//-------------------------------------------------------
+function commandGET(tokens) {
+    const key = tokens[1];
+    if (!key) throw new Error("GET needs a key.");
+
+    const entry = DB[key];
+    if (!entry) throw new Error("Key not found.");
+
+    if (entry.expiresAt && Date.now() > entry.expiresAt) {
+        return "This key has expired. Use DEL to remove it.";
+    }
+
+    return JSON.stringify(entry.data, null, 2);
+}
