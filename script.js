@@ -14,3 +14,13 @@ document.addEventListener("keydown", function (e) {
         e.preventDefault();
     }
 });
+
+//-------------------------------------------------------
+// ENTER KEY HANDLER
+//-------------------------------------------------------
+function handleEnter(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        runCommand();
+    }
+}
