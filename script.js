@@ -231,3 +231,36 @@ function commandINDEX(tokens) {
 
     return "INDEXED";
 }
+
+//-------------------------------------------------------
+// COMMAND: RANGE (numeric search)
+//-------------------------------------------------------
+function commandRANGE(tokens) {
+    const field = tokens[1];
+    const start = Number(tokens[2]);
+    const end = Number(tokens[3]);
+
+    if (isNaN(start) || isNaN(end)) {
+        throw new Error("RANGE requires numeric start and end.");
+    }
+
+    const results = {};
+
+    for (const [key, entry] of Object.entries(DB)) {
+        const data = entry.data;
+
+        if (data[field] !== undefined && !isNaN(data[field])) {
+            const numeric = Number(data[field]);
+            if (numeric >= start && numeric <= end) {
+                results[key] = data;
+            }
+        }
+    }
+
+    const indexName = `RANGE:${field}:${start}-${end}`;
+    INDICES[indexName] = results;
+
+    return Object.keys(results).length
+        ? JSON.stringify(results, null, 2)
+        : "No results.";
+}
