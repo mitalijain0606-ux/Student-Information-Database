@@ -40,8 +40,8 @@ function clearOutput() {
 // LOCAL STORAGE: SAVE
 //-------------------------------------------------------
 function persist() {
-    localStorage.setItem("simple_kv_db", JSON.stringify(DB));
-    localStorage.setItem("simple_kv_index", JSON.stringify(INDICES));
+    localStorage.setItem("kv_db", JSON.stringify(DB)); //chnge "simple_kv_db" to "kv-db"
+    localStorage.setItem("kv_index", JSON.stringify(INDICES)); //chnge "simple_kv_index" to "kv_index"
 }
 
 //-------------------------------------------------------
