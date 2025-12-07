@@ -48,10 +48,10 @@ function persist() {
 // LOCAL STORAGE: LOAD AT STARTUP
 //-------------------------------------------------------
 function loadFromStorage() {
-    const savedDB = localStorage.getItem("simple_kv_db");
-    const savedIDX = localStorage.getItem("simple_kv_index");
+    const savedDB = localStorage.getItem("kv_db");
+    const savedIDX = localStorage.getItem("kv_index");
 
-    if (savedDB) Object.assign(DB, JSON.parse(savedDB));
+    if (savedDB) Object.assign(DB, JSON.parse(savedDB)); 
     if (savedIDX) Object.assign(INDICES, JSON.parse(savedIDX));
 }
 
